@@ -1,0 +1,19 @@
+4. Find all business postal codes of restaurants with issues related to the water (violation description contains substring "water").
+
+
+
+#Postgresql solution
+Solution 1 Using ILIKE operator 
+
+SELECT 
+    distinct business_postal_code
+FROM sf_restaurant_health_violations
+WHERE 
+    violation_description ILIKE '%water%'
+    
+    
+Solution 2 Using Distinct and Like operators
+
+select distinct(business_postal_code)
+from sf_restaurant_health_violations
+where violation_description LIKE '%water%'
