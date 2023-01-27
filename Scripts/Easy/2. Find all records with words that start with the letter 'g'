@@ -1,0 +1,13 @@
+2. Find all records with words that start with the letter 'g'
+
+# Postgresql Solution
+
+SELECT
+ words1,
+ words2
+FROM
+ google_word_lists
+WHERE
+ (words1 ILIKE 'g%' OR words1 ILIKE '%,g%') 
+ OR 
+ (words2 ILIKE 'g%' OR words2 ILIKE '%,g%')
