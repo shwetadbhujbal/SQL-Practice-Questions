@@ -1,3 +1,7 @@
+1. Find the average of inspections scores between 91 and 100
+
+#Postgresql Solution
+
 SELECT
     avg(score) AS avg_score
 FROM los_angeles_restaurant_health_inspections
