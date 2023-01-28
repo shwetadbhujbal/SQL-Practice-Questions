@@ -1,0 +1,22 @@
+6. Find the number of people on Airbnb
+
+Find the number of people that made a search on Airbnb.
+
+ds:datetime
+id_user:varchar
+ds_checkin:datetime
+ds_checkout:datetime
+n_searches:int
+n_nights:float
+n_guests_min:int
+n_guests_max:int
+origin_country:varchar
+filter_price_min:float
+filter_price_max:float
+filter_room_types:varchar
+filter_neighborhoods:datetime
+
+
+SELECT 
+    count(distinct id_user) AS total_people_searching
+FROM airbnb_searches
