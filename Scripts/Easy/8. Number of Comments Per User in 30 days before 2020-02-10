@@ -1,0 +1,22 @@
+ID: 2004
+Number of Comments Per User in 30 days before 2020-02-10
+
+Return the total number of comments received for each user in the 30 or less days before 2020-02-10. 
+Don't output users who haven't received any comment in the defined time period.
+user_id:int
+created_at:datetime
+number_of_comments:int
+
+Hint:
+Filter dataset by relative date range
+It's useful to use relative date range in case you need to implement some minor changes quickly
+Make sure created_at field is interpreted as date
+
+
+# PostGreSQL Solution:
+
+select user_id, sum(number_of_comments)
+from fb_comments_count
+where created_at between TO_DATE('2020-02-10','YYYY-MM-DD') -30 
+and TO_DATE('2020-02-10','YYYY-MM-DD')
+group by user_id
