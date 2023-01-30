@@ -1,0 +1,26 @@
+ID 2011
+
+Session Type Duration
+
+Calculate the average session duration for each session type?
+
+user_id:int
+session_start:datetime
+session_end:datetime
+session_id:int
+session_type:varchar
+
+Hint:
+Create a measure which is session duration
+Aggregate the new measure by session_type
+
+
+MYSQL Solution:
+
+SELECT
+    session_type,
+    AVG(TIMESTAMPDIFF(SECOND, session_start,session_end))
+FROM
+    twitch_sessions
+GROUP BY
+    session_type
