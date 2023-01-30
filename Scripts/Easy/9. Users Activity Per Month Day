@@ -1,0 +1,23 @@
+ID 2006
+
+Users Activity Per Month Day
+Return a distribution of users activity per day of the month
+
+post_id:int
+poster:int
+post_text:varchar
+post_keywords:varchar
+post_date:datetime
+
+
+Hint:
+
+Get the day of the month from the date
+Combine calculations using the newly created field in the aggregation
+
+# MYSQL Solution
+
+SELECT day(post_date) as date_part, count(post_id) as count 
+FROM facebook_posts
+group by date_part
+order by date_part DESC
