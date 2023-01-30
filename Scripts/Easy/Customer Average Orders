@@ -1,0 +1,19 @@
+ID 2013
+
+Customer Average Orders
+
+How many customers placed an order and what is the average order amount?
+
+id:int
+customer_id:int
+courier_id:int
+seller_id:int
+order_timestamp_utc:datetime
+amount:float
+city_id:int
+
+Hint: Perform multiple aggregation at time
+
+MYSQL Solution:
+SELECT count(distinct(customer_id)) as count, round(avg(amount),3) as avg FROM postmates_orders
+
