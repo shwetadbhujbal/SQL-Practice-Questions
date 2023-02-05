@@ -29,6 +29,8 @@ Output cities with rank smaller than or equal to 5.
 
 MySql solution:
 
+#solution1 
+
 select city, 
 count_of_5_stars
 from (select city, 
@@ -38,3 +40,17 @@ from yelp_business
 WHERE stars = 5
 GROUP BY city) a
 where rnk <= 5
+
+#Solution 2
+
+with city_star_count as (
+select city, count(stars) , rank() over (order by count(stars) desc) rnk
+from yelp_business 
+where stars = 5
+group by 1
+)
+select * from city_star_count where rnk <= 5
+
+;
+
+
