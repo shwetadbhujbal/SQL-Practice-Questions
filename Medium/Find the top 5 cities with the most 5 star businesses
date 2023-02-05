@@ -1,0 +1,40 @@
+Find the top 5 cities with the most 5 star businesses
+
+Find the top 5 cities with the most 5-star businesses. Output the city name along with the number of 5-star businesses.
+In the case of multiple cities having the same number of 5-star businesses, use the ranking function returning the lowest rank in the group and 
+output cities with a rank smaller than or equal to 5.
+
+Table: yelp_business
+
+business_id:varchar
+name:varchar
+neighborhood:varchar
+address:varchar
+city:varchar
+state:varchar
+postal_code:varchar
+latitude:float
+longitude:float
+stars:float
+review_count:int
+is_open:int
+categories:varchar
+
+Hint: 
+Use the COUNT() function to count businesses.
+Use the WHERE clause to find records with 5 stars.
+Group records by the city.
+Use the RANK() function to rank the cities based on the number of businesses.
+Output cities with rank smaller than or equal to 5.
+
+MySql solution:
+
+select city, 
+count_of_5_stars
+from (select city, 
+count(distinct(business_id)) as count_of_5_stars,
+rank() over(order by count(distinct(business_id)) desc) as rnk 
+from yelp_business
+WHERE stars = 5
+GROUP BY city) a
+where rnk <= 5
