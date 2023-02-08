@@ -1,0 +1,57 @@
+# Find all possible varieties which occur in either of the winemag datasets
+
+Find all possible varieties which occur in either of the winemag datasets.
+Output unique variety values only.
+Sort records based on the variety in ascending order.
+
+
+# MYSQL Solution
+
+
+select distinct(variety) from winemag_p1
+union
+select distinct(variety) from winemag_p2
+order by variety 
+
+
+
+Tables: winemag_p1, winemag_p2
+
+winemag_p1
+id:int
+country:varchar
+description:varchar
+designation:varchar
+points:int
+price:float
+province:varchar
+region_1:varchar
+region_2:varchar
+variety:varchar
+winery:varchar
+
+winemag_p2
+
+id:int
+country:varchar
+description:varchar
+designation:varchar
+points:int
+price:float
+province:varchar
+region_1:varchar
+region_2:varchar
+taster_name:varchar
+taster_twitter_handle:varchar
+title:varchar
+variety:varchar
+winery:varchar
+
+
+Approach Hints:
+
+Use DISTINCT to find unique varieties.
+Combine winemag_p1 and winemag_p2 datasets using a UNION.
+Use the WHERE clause to apply conditions.
+
+
